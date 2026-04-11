@@ -1,5 +1,6 @@
 package Domain.Enteties;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Pedido {
@@ -31,6 +32,24 @@ public class Pedido {
         total += produtos.getPreco();
         produtos.retirarEstoque();
     }
+
+    public void fechar() {
+        if (produtos.isEmpty()) {
+            throw new IllegalArgumentException("É necessário ao menos um produto para realizar o pedido.");
+        }
+        if (total > 500) {
+            total *= 0.9;
+        }
+        stories = "FERRADO";
+    }
+
+    public int getNumber() {return number;}
+    public Client getCliente() {return cliente;}
+    public List<Product> getProdutos() {return Collections.unmodifiableList(produtos);}
+    public String getStories() {return stories;}
+    public double getTotal() {return total;}
+
+
 
 
 }
