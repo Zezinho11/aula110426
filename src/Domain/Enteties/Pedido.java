@@ -1,4 +1,36 @@
 package Domain.Enteties;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido {
+    private int number;
+    private Client cliente;
+    private List<Product> produtos;
+    private String stories;
+    private double total;
+
+
+    public Pedido(int number, Client cliente) {
+        if (cliente == null){
+            throw new IllegalArgumentException("Cliente é obrigatório.");
+        }
+        this.number = number;
+        this.cliente = cliente;
+        this.produtos = new ArrayList<>(Product);
+        this.stories = "ABREDO";
+        this.total = 0.0;
+    }
+    public void addProduct(Product produtos) {
+        if (produtos == null ){
+            throw new IllegalArgumentException("Nome de produto é necessário");
+        }
+        if (!produtos.temEstoque()) {
+            throw new IllegalArgumentException("Produto em falta no estoque");
+        }
+        produtos.add(produtos);
+        total += produtos.getPreco();
+        produtos.retirarEstoque();
+    }
+
+
 }
