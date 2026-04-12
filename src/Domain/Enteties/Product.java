@@ -17,11 +17,18 @@ public class Product {
     this.name = name;
     this.preco = preco;
     this.estoque = estoque;
-
-
     }
 
-
+    public String getName() {return name;}
+    public double getPreco() {return preco;}
+    public int getEstoque() {return estoque;}
+    public boolean temEstoque() {return estoque > 0;}
+    public void retirarEstoque() {
+        if (!temEstoque()) {
+        throw new IllegalArgumentException("Produto sem estoque disponivel.");
+        }
+        estoque--;
+    }
 
 
 
