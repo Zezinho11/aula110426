@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PedidoRepositoryMemory implements PedidoRepository{
-    private List<Pedido> pedidos;
+    private ArrayList pedidos;
 
     {
-        pedidos = new ArrayList<;
+        pedidos = new ArrayList<>;
     };
     public void salvar(Pedido pedido) {pedidos.add(pedido);}
     public List<Pedido> Listar() {return pedidos;}
