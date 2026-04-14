@@ -9,7 +9,7 @@ public class NewPedidoRequest {
     private List<Double> precosProdutos;
     private List<Integer> estoquesProdutos;
 
-    public NewPedidoRequest(String nameClient, String cpfClient, List<String> nomesProducts, List<Double> precosProdutos, List<Integer> estoquesProdutos ) {
+    public NewPedidoRequest(String nameclient, String cpfclient, List<String> nomes, List<Double> precos, List<Integer> estoques) {
         this.nameClient = nameClient;
         this.cpfClient = cpfClient;
         this.nomesProducts = nomesProducts;

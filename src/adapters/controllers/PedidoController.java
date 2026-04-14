@@ -54,13 +54,58 @@ public class PedidoController {
 
          }
 
+        private void criarPedido(){
+         try{
+             System.out.println("Digite o nome do cliente: ");
+             String nameclient = scanner.nextLine();
 
+             System.out.println("Digite o CPF do cliente: ");
+             String cpfclient = scanner.nextLine();
 
+             List<String> nomes = new ArrayList<>();
+             List<Double>precos = new ArrayList<>();
+             List<Integer> estoques = new ArrayList<>();
 
+             String continue;
+             do {
+                 System.out.println("Digite o nome do produto: ");
+                 nomes.add(scanner.nextLine());
 
+                 System.out.println("Digite o preço do produto: ");
+                 precos.add(Double.parseDouble(scanner.nextLine()));
 
+                 System.out.println("Estoque disponível do produto: ");
+                 estoques.add(Integer.parseInt(scanner.nextLine()));
 
+                 System.out.println("Deseja Adicionar outro produto? (s/n)");
+                 continue =  scanner.nextLine();
+
+             } while (continue.equalsIgnoreCase("s"));
+
+             NewPedidoRequest request = new NewPedidoRequest(nameclient, cpfclient, nomes, precos, estoques);
+
+             Pedido pedido = newPedidoUseCase.executar(request);
+
+             System.out.println("\nPedido realizado com sucesso!");
+             System.out.println("Número: " + pedido.getNumber());
+             System.out.println("Cliente: " + pedido.getCliente().getName());
+             System.out.println("Status: " + pedido.getStories());
+             System.out.println("Total final do pedido: R$" + pedido.getTotal());
+
+        } catch (Exception e) {
+             System.out.println("Erro ao criar pedido: "  + e.getMessage());
+         }
      }
+
+
+
+
+
+
+
+
+
+
 
 
 
