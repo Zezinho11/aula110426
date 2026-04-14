@@ -37,11 +37,27 @@ public class PedidoController {
                  opcao = -1;
              }
 
-
-
+             switch (opcao) {
+                 case 1:
+                     criarPedido();
+                     break;
+                 case 2:
+                     listarPedidos();
+                     break;
+                 case 0:
+                     System.out.println("Finalizando sistema...");
+                     break;
+                 default:
+                     System.out.println("Opção invalida!");
              }
+         } while (opcao !=0);
 
          }
+
+
+
+
+
 
 
      }
