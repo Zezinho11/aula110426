@@ -24,6 +24,26 @@ public class PedidoController {
          int opcao;
 
 
+         do {
+             System.out.println("\n===== SISTEMA PARA PEDIDOS - BY JOSÉ SUZUKI =====");
+             System.out.println("1 - Criar novo pedido");
+             System.out.println("2 - Listar pedidos criados");
+             System.out.println("0 - Sair");
+             System.out.print("escolha uma opção acima: ");
+
+             try {
+                 opcao = Integer.parseInt(scanner.nextLine());
+             } catch (Exception e) {
+                 opcao = -1;
+             }
+
+
+
+             }
+
+         }
+
+
      }
 
 
