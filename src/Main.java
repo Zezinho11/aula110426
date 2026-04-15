@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import Application.usercases.NewPedidoUseCase;
 import Application.usercases.ListPedidosUseCase;
 import adapters.controllers.PedidoController;
-public class Main {}
+
 
 
 public class Main {
