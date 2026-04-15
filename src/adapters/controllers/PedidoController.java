@@ -97,7 +97,30 @@ public class PedidoController {
          }
      }
 
+     private void listarPedidos(){
+         List<Pedido> pedidos = listPedidosUseCase.executar();
 
+         if(pedidos.isEmpty()){
+             System.out.println("Nenhum pedido cadastrado!");
+             return;
+         }
+
+         System.out.println("\n===== LISTA DE PEDIDOS DO SISTEMA =====");
+         for (Pedido pedido : pedidos) {
+             System.out.println("\nPedido número: " + pedido.getNumber());
+             System.out.println("Cliente: " + pedido.getCliente().getName());
+             System.out.println("CPF: " + pedido.getCliente().getCpf() );
+             System.out.println("Status: " + pedido.getStories());
+             System.out.println("Produtos: " + pedido.getProdutos());
+             for (Product produto : pedido.getProdutos()) {
+                 System.out.println("- " = produto.getName() + "| R$ " + produto.getPreco());
+             }
+             System.out.println("Total final do pedido: R$" + pedido.getTotal());
+
+         }
+
+
+     }
 
 
 
