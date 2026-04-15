@@ -17,20 +17,20 @@ public class Pedido {
         }
         this.number = number;
         this.cliente = cliente;
-        this.produtos = new ArrayList<>(Product);
+        this.produtos = new ArrayList<Product>();
         this.stories = "ABREDO";
         this.total = 0.0;
     }
-    public void addProduct(Product produtos) {
-        if (produtos == null ){
+    public void addProduct(Product produto) {
+        if (produto == null ){
             throw new IllegalArgumentException("Nome de produto é necessário");
         }
-        if (!produtos.temEstoque()) {
+        if (!produto.temEstoque()) {
             throw new IllegalArgumentException("Produto em falta no estoque");
         }
-        produtos.add(produtos);
-        total += produtos.getPreco();
-        produtos.retirarEstoque();
+        produtos.add(produto);
+        total += produto.getPreco();
+        produto.retirarEstoque();
     }
 
     public void fechar() {

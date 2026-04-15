@@ -9,7 +9,7 @@ import Domain.Repositories.PedidoRepository;
 import java.util.List;
 
 public class NewPedidoUseCase {
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
 
     public NewPedidoUseCase(PedidoRepository pedidoRepository){
         this.pedidoRepository = pedidoRepository;
@@ -31,7 +31,7 @@ public class NewPedidoUseCase {
         }
 
         pedido.fechar();
-        pedidoRepository.salvar();
+        pedidoRepository.salvar(pedido);
         return pedido;
 
     }
@@ -40,13 +40,12 @@ public class NewPedidoUseCase {
         if (request == null){
             throw new IllegalArgumentException("Erro na requisição.");
         }
-        if (request.getNomesProducts() == null) || request.getNomesProducts().isEmpty()) {
+        if (request.getNomesProducts() == null || request.getNomesProducts().isEmpty()) {
             throw new IllegalArgumentException("Informe ao menos um produto.");
         }
-        if (request.getNomesProducts().size() != request.getPrecosProdutos().size()
-        || request.getNomesProducts().size() != request.getEstoquesProdutos()){
+        if (!(request.getNomesProducts().size() != request.getPrecosProdutos().size()
+                && request.getNomesProducts().size() != request.getEstoquesProdutos().size())) {
             throw new IllegalArgumentException("dados de produtos são inconsistentes.");
-
         }
 
 
