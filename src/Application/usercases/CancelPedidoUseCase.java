@@ -13,25 +13,16 @@ public class CancelPedidoUseCase {
         this.pedidoRepository = pedidoRepository;
     }
 
+    // CancelPedidoUseCase.java
     public Pedido executar(int numero) {
-        if (numero < 0) {
-            throw new IllegalArgumentException("Numero do pedido inválido");
-        }
-
         Optional<Pedido> pedidoOpt = pedidoRepository.buscarPorNumero(numero);
 
-        if (pedidoOpt.isEmpty()) {
-            throw new IllegalArgumentException("pedido número " + numero + " não encontrado");
-        }
+        if (pedidoOpt.isEmpty())
+            throw new IllegalArgumentException("Pedido número " + numero + " não encontrado.");
 
         Pedido pedido = pedidoOpt.get();
         pedido.cancelar();
+        pedidoRepository.atualizar(pedido); // explícito e desacoplado
         return pedido;
-
     }
-
-
-
-
-
 }

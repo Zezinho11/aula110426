@@ -10,6 +10,12 @@ public class NewPedidoRequest {
     private List<Integer> estoquesProdutos;
 
     public NewPedidoRequest(String nameclient, String cpfclient, List<String> nomes, List<Double> precos, List<Integer> estoques) {
+
+        if (nomes == null || nomes.isEmpty())
+            throw new IllegalArgumentException("Informe ao menos um produto.");
+        if (nomes.size() != precos.size() || nomes.size() != estoques.size())
+            throw new IllegalArgumentException("Dados de produtos são inconsistentes.");
+
         this.nameClient = nameclient;
         this.cpfClient = cpfclient;
         this.nomesProducts = nomes;

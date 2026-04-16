@@ -14,6 +14,8 @@ public class PedidoRepositoryMemory implements PedidoRepository {
         pedidos.add(pedido);
     }
 
+    public void atualizar(Pedido pedido) { }
+
     public List<Pedido> listar() {
         return pedidos;
     }

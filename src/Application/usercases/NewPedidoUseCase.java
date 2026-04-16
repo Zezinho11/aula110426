@@ -36,22 +36,9 @@ public class NewPedidoUseCase {
 
     }
 
-    private void validarRequest(NewPedidoRequest request){
-        if (request == null){
+    private void validarRequest(NewPedidoRequest request) {
+        if (request == null)
             throw new IllegalArgumentException("Erro na requisição.");
-        }
-        if (request.getNomesProducts() == null || request.getNomesProducts().isEmpty()) {
-            throw new IllegalArgumentException("Informe ao menos um produto.");
-        }
-        if (request.getNomesProducts().size() != request.getPrecosProdutos().size()
-                || request.getNomesProducts().size() != request.getEstoquesProdutos().size()) {
-            throw new IllegalArgumentException("dados de produtos são inconsistentes.");
-        }
-
-
-
-
-
     }
 
 
