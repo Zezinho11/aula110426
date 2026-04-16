@@ -10,5 +10,5 @@ public class ListPedidosUseCase {
 
     public ListPedidosUseCase(PedidoRepository pedidoRepository) {this.pedidoRepository = pedidoRepository;}
 
-    public List<Pedido> executar { return pedidoRepository.listar(); }
+    public List<Pedido> executar() { return pedidoRepository.listar(); }
 }
