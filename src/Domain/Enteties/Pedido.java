@@ -43,6 +43,13 @@ public class Pedido {
         stories = "FERRADO";
     }
 
+    public void cancelar(){
+        if (stories.equals("Cancelado")){
+            throw new IllegalArgumentException("Pedido já cancelado.");
+        }
+        stories = "CANCELADO";
+    }
+
     public int getNumber() {return number;}
     public Client getCliente() {return cliente;}
     public List<Product> getProdutos() {return Collections.unmodifiableList(produtos);}
