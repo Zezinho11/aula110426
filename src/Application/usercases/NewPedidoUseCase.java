@@ -43,8 +43,8 @@ public class NewPedidoUseCase {
         if (request.getNomesProducts() == null || request.getNomesProducts().isEmpty()) {
             throw new IllegalArgumentException("Informe ao menos um produto.");
         }
-        if (!(request.getNomesProducts().size() != request.getPrecosProdutos().size()
-                && request.getNomesProducts().size() != request.getEstoquesProdutos().size())) {
+        if (request.getNomesProducts().size() != request.getPrecosProdutos().size()
+                || request.getNomesProducts().size() != request.getEstoquesProdutos().size()) {
             throw new IllegalArgumentException("dados de produtos são inconsistentes.");
         }
 
