@@ -66,7 +66,7 @@ public class PedidoController {
              List<Double>precos = new ArrayList<>();
              List<Integer> estoques = new ArrayList<>();
 
-             String continue;
+             String continuar;
              do {
                  System.out.println("Digite o nome do produto: ");
                  nomes.add(scanner.nextLine());
@@ -78,9 +78,9 @@ public class PedidoController {
                  estoques.add(Integer.parseInt(scanner.nextLine()));
 
                  System.out.println("Deseja Adicionar outro produto? (s/n)");
-                 continue =  scanner.nextLine();
+                 continuar =  scanner.nextLine();
 
-             } while (continue.equalsIgnoreCase("s"));
+             } while (continuar.equalsIgnoreCase("s"));
 
              NewPedidoRequest request = new NewPedidoRequest(nameclient, cpfclient, nomes, precos, estoques);
 
@@ -113,7 +113,7 @@ public class PedidoController {
              System.out.println("Status: " + pedido.getStories());
              System.out.println("Produtos: " + pedido.getProdutos());
              for (Product produto : pedido.getProdutos()) {
-                 System.out.println("- " = produto.getName() + "| R$ " + produto.getPreco());
+                 System.out.println("- " + produto.getName() + "| R$ " + produto.getPreco());
              }
              System.out.println("Total final do pedido: R$" + pedido.getTotal());
 
