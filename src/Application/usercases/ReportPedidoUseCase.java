@@ -28,12 +28,7 @@ public class ReportPedidoUseCase {
                 totalReceita += pedido.getTotal();
             }
 
-            return new ReportPedidoResponse(
-              totalPedidos,
-              totalcancelados,
-              totalReceita,
-              totalReceitaCancelada,
-            );
+            return new ReportPedidoResponse(totalPedidos, totalcancelados, totalReceita, totalReceitaCancelada);
 
 
 

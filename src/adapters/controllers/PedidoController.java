@@ -6,6 +6,10 @@ import java.util.Scanner;
 import Application.DTO.NewPedidoRequest;
 import Application.usercases.ListPedidosUseCase;
 import Application.usercases.NewPedidoUseCase;
+import Application.usercases.SearchPedidosUseCase;
+import Application.usercases.CancelPedidoUseCase;
+import Application.usercases.ReportPedidoUseCase;
+import Application.usercases.ReportPedidoResponse;
 import Domain.Enteties.Pedido;
 import Domain.Enteties.Product;
 
@@ -13,6 +17,9 @@ import Domain.Enteties.Product;
 public class PedidoController {
     private NewPedidoUseCase newPedidoUseCase;
     private ListPedidosUseCase listPedidosUseCase;
+    private SearchPedidosUseCase searchPedidosUseCase;
+    private CancelPedidoUseCase cancelPedidoUseCase;
+    private ReportPedidoUseCase reportPedidoUseCase;
     private Scanner scanner = new Scanner(System.in);
 
      public PedidoController(NewPedidoUseCase newPedidoUseCase, ListPedidosUseCase listPedidosUseCase ){
@@ -47,6 +54,14 @@ public class PedidoController {
                  case 2:
                      listarPedidos();
                      break;
+                 case 3:
+                     buscarPedido();
+                     break;
+                 case 4:
+                     cancelarPedido();
+                     break;
+                 case 5:
+                     exibirRelatorio();
                  case 0:
                      System.out.println("Finalizando sistema...");
                      break;
@@ -125,11 +140,43 @@ public class PedidoController {
 
      }
 
+     private void buscarPedido(){
+         try {
+             System.out.println("Digite o número do pedido: ");
+             int numero = Integer.parseInt(scanner.nextLine());
 
+             Pedido pedido = searchPedidosUseCase.executar(numero);
 
+             System.out.println("\nPedido encontrado:");
+             System.out.println("Número: " + pedido.getNumber());
+             System.out.println("Cliente: " + pedido.getCliente().getName());
+             System.out.println("Status: " + pedido.getStories());
+             System.out.println("Total do pedido: R$" + pedido.getTotal());
+         } catch (Exception e) {
+             System.out.println("Erro ao buscar pedido: " + e.getMessage());
+         }
+     }
 
+    private void cancelarPedido(){
+         try {
+              System.out.print("Digite o número do pedido para cancelar: ");
+              int numero = Integer.parseInt(scanner.nextLine());
 
+              Pedido pedido = cancelPedidoUseCase.executar(numero);
 
+              System.out.println("\n Pedido número" + pedido.getNumber() + " cancelado com sucesso!");]
+              System.out.println("Status: " + pedido.getStories());
+         }catch (Exception e) {
+             System.out.println("Erro ao cancelar pedido: " + e.getMessage());
+         }
+    }
+
+    private void exibirRelatorio(){
+         ReportPedidoResponse report = reportPedidoUseCase.executar();
+
+         System.out.println("\n===== RELÁTORIO DE PEDIDOS =====");
+         
+    }
 
 
 
