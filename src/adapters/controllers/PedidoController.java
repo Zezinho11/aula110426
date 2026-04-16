@@ -28,6 +28,9 @@ public class PedidoController {
              System.out.println("\n===== SISTEMA PARA PEDIDOS - BY JOSÉ SUZUKI =====");
              System.out.println("1 - Criar novo pedido");
              System.out.println("2 - Listar pedidos criados");
+             System.out.println("3 - Buscar Pedido");
+             System.out.println("4 - Cancelar Pedido");
+             System.out.println("5 - Relatório Resumido");
              System.out.println("0 - Sair");
              System.out.print("escolha uma opção acima: ");
 
