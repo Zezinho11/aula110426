@@ -44,7 +44,7 @@ public class Pedido {
     }
 
     public void cancelar(){
-        if (stories.equals("Cancelado")){
+        if (stories.equals("CANCELADO")){
             throw new IllegalArgumentException("Pedido já cancelado.");
         }
         stories = "CANCELADO";

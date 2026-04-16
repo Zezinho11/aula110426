@@ -22,9 +22,13 @@ public class PedidoController {
     private ReportPedidoUseCase reportPedidoUseCase;
     private Scanner scanner = new Scanner(System.in);
 
-     public PedidoController(NewPedidoUseCase newPedidoUseCase, ListPedidosUseCase listPedidosUseCase ){
+     public PedidoController(NewPedidoUseCase newPedidoUseCase, ListPedidosUseCase listPedidosUseCase, SearchPedidosUseCase searchPedidosUseCase,
+                             CancelPedidoUseCase cancelPedidoUseCase, ReportPedidoUseCase reportPedidoUseCase ) {
          this.newPedidoUseCase = newPedidoUseCase;
          this.listPedidosUseCase = listPedidosUseCase;
+         this.searchPedidosUseCase = searchPedidosUseCase;
+         this.cancelPedidoUseCase = cancelPedidoUseCase;
+         this.reportPedidoUseCase = reportPedidoUseCase;
      }
 
      public void iniciarPedido(){
@@ -62,6 +66,7 @@ public class PedidoController {
                      break;
                  case 5:
                      exibirRelatorio();
+                     break;
                  case 0:
                      System.out.println("Finalizando sistema...");
                      break;
@@ -164,7 +169,7 @@ public class PedidoController {
 
               Pedido pedido = cancelPedidoUseCase.executar(numero);
 
-              System.out.println("\n Pedido número" + pedido.getNumber() + " cancelado com sucesso!");]
+              System.out.println("\n Pedido número" + pedido.getNumber() + " cancelado com sucesso!");
               System.out.println("Status: " + pedido.getStories());
          }catch (Exception e) {
              System.out.println("Erro ao cancelar pedido: " + e.getMessage());
@@ -175,7 +180,10 @@ public class PedidoController {
          ReportPedidoResponse report = reportPedidoUseCase.executar();
 
          System.out.println("\n===== RELÁTORIO DE PEDIDOS =====");
-         
+         System.out.println("Total de pedidos:     " + report.getTotalPedidos());
+         System.out.println("Pedidos cancelados:   " + report.getTotalcancelados());
+         System.out.println("Receita confirmada:   R$" + report.getTotalReceita());
+         System.out.println("Receita cancelada:    R$" + report.getTotalReceitaCancelada());
     }
 
 

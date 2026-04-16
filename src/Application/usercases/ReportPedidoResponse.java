@@ -4,11 +4,11 @@ public class ReportPedidoResponse {
 
     private final int totalPedidos;
     private final int totalcancelados;
-    private final int totalReceita;
-    private final int totalReceitaCancelada;
+    private final double totalReceita;
+    private final double totalReceitaCancelada;
 
 
-    public ReportPedidoResponse(int totalPedidos, int totalcancelados, int totalReceita, int totalReceitaCancelada) {
+    public ReportPedidoResponse(int totalPedidos, int totalcancelados, double totalReceita, double totalReceitaCancelada) {
         this.totalPedidos = totalPedidos;
         this.totalcancelados = totalcancelados;
         this.totalReceita = totalReceita;
@@ -25,11 +25,11 @@ public class ReportPedidoResponse {
         return totalcancelados;
     }
 
-    public int getTotalReceita()  {
+    public double getTotalReceita()  {
         return totalReceita;
     }
 
-    public int getTotalReceitaCancelada()  {
+    public double getTotalReceitaCancelada()  {
         return totalReceitaCancelada;
     }
 

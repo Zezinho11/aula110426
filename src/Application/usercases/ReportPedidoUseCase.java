@@ -11,7 +11,7 @@ public class ReportPedidoUseCase {
             this.pedidoRepository = pedidoRepository;
         }
 
-        public ReportPedidoUseCase executar(){
+        public ReportPedidoResponse executar(){
             List<Pedido> pedidos = pedidoRepository.listar();
 
             int totalPedidos = 0;
@@ -21,19 +21,15 @@ public class ReportPedidoUseCase {
 
             for (Pedido pedido : pedidos) {
             totalPedidos++;
-            if (pedido.getStories().equals("Cancelado")) {
+            if (pedido.getStories().equals("CANCELADO")) {
                 totalcancelados++;
                 totalReceitaCancelada += pedido.getTotal();
             } else {
                 totalReceita += pedido.getTotal();
             }
 
-            return new ReportPedidoResponse(totalPedidos, totalcancelados, totalReceita, totalReceitaCancelada);
-
-
-
             }
-
+            return new ReportPedidoResponse(totalPedidos, totalcancelados,  totalReceita, totalReceitaCancelada);
 
         }
 
