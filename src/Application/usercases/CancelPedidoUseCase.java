@@ -22,7 +22,7 @@ public class CancelPedidoUseCase {
 
         Pedido pedido = pedidoOpt.get();
         pedido.cancelar();
-        pedidoRepository.atualizar(pedido); // explícito e desacoplado
+        pedidoRepository.atualizar(pedido);
         return pedido;
     }
 }
