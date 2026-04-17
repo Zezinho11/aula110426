@@ -21,7 +21,7 @@ public class SearchPedidosUseCase {
         Optional<Pedido> pedido = pedidoRepository.buscarPorNumero(numero);
 
         if (pedido.isEmpty()) {
-            throw new IllegalArgumentException("Pedido número " + numero + "não encontrado.");
+            throw new IllegalArgumentException("Pedido número " + numero + " não encontrado.");
         }
 
         return pedido.get();
