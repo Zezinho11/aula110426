@@ -13,7 +13,6 @@ public class CancelPedidoUseCase {
         this.pedidoRepository = pedidoRepository;
     }
 
-    // CancelPedidoUseCase.java
     public Pedido executar(int numero) {
         Optional<Pedido> pedidoOpt = pedidoRepository.buscarPorNumero(numero);
 
