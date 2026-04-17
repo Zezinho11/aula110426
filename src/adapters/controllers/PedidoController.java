@@ -169,7 +169,7 @@ public class PedidoController {
 
               Pedido pedido = cancelPedidoUseCase.executar(numero);
 
-              System.out.println("\n Pedido número" + pedido.getNumber() + " cancelado com sucesso!");
+              System.out.println("\n Pedido número " + pedido.getNumber() + " cancelado com sucesso!");
               System.out.println("Status: " + pedido.getStories());
          }catch (Exception e) {
              System.out.println("Erro ao cancelar pedido: " + e.getMessage());
